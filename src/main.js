@@ -8,7 +8,7 @@ import VueGAPI from "vue-gapi";
 const apiConfig = {
   apiKey: "AIzaSyBo5pk_VOJ1kRVRD-cXky9ZocOHfhcx18c",
   clientId:
-    "747294690783-l8qqrt6a2mlifas7rrijmhi8gvl8bh6t.apps.googleusercontent.com",
+    "604341426682-9nfsbb6ovjrhf41mh6vl7ojujhomsarc.apps.googleusercontent.com",
   discoveryDocs: ["https://sheets.googleapis.com/$discovery/rest?version=v4"],
   scope: "https://www.googleapis.com/auth/spreadsheets",
   refreshToken: true

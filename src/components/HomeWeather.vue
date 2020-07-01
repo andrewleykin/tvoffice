@@ -14,7 +14,7 @@ export default {
   }),
   async mounted() {
     const { data } = await axios.get(
-      "http://api.openweathermap.org/data/2.5/forecast?lat=55.75399400&lon=37.62209300&units=metric&lang=ru&appid=5cd2f8841c52e2013633cf31b2782cc8"
+      "https://api.openweathermap.org/data/2.5/forecast?lat=55.75399400&lon=37.62209300&units=metric&lang=ru&appid=5cd2f8841c52e2013633cf31b2782cc8"
     );
     this.list = data.list.splice(0, 3).map(({ weather, main }) => ({
       icon: weather[0].icon,

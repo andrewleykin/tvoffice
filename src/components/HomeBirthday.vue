@@ -19,6 +19,7 @@ export default {
   },
   mounted() {
     // console.log(moment("29 января", "DD MMMM"));
+    // sheet id - 18ligZCrsZHJtECMhWadUYbIjnRKMA_MMarqWy8_5sN0
     this.login();
   }
 };
