@@ -86,6 +86,7 @@ export default {
   border-radius: 100%;
   background-color: black;
   filter: drop-shadow(0 0.125rem 0.5rem rgba(black, 0.1));
+  position relative
 
   &::after {
     top: 50%;
