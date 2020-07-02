@@ -2,7 +2,7 @@
   .home-weather
     .home-weather__block(v-for="(item, index) in list" :key="index")
       span {{item.temp}}
-      img(:src="`http://openweathermap.org/img/wn/${item.icon}@2x.png`")
+      img(:src="`https://openweathermap.org/img/wn/${item.icon}@2x.png`")
 </template>
 
 <script>

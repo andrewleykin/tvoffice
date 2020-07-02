@@ -13,6 +13,7 @@ export default {
   }),
   methods: {
     initClient() {
+      console.log("initClient -> initClient", window.gapi.client);
       window.gapi.client
         .init({
           apiKey: "AIzaSyBo5pk_VOJ1kRVRD-cXky9ZocOHfhcx18c",
@@ -45,6 +46,7 @@ export default {
   },
   mounted() {
     window.addEventListener("google-loaded", () => {
+      console.log("mounted -> google-loaded", this);
       window.gapi.load("client:auth2", this.initClient);
     });
     // console.log(moment("29 января", "DD MMMM"));
