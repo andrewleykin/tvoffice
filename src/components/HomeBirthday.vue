@@ -42,13 +42,14 @@ export default {
           range: "Class Data!A2:B"
         })
         .then(res => console.log(res));
+    },
+    googleLoaded() {
+      console.log("mounted -> google-loaded", this);
+      window.gapi.load("client:auth2", this.initClient);
     }
   },
   mounted() {
-    window.addEventListener("google-loaded", () => {
-      console.log("mounted -> google-loaded", this);
-      window.gapi.load("client:auth2", this.initClient);
-    });
+    window.addEventListener("google-loaded", this.googleLoaded);
     // console.log(moment("29 января", "DD MMMM"));
   }
 };
