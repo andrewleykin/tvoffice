@@ -10,14 +10,8 @@ export default {
   name: "HomeBirthday",
   methods: {
     getList() {
-      console.log("getList -> window.gapi", window.gapi);
-      this.$getGapiClient().finally(() => {
-        window.gapi.client.sheets.spreadsheets.values
-          .get({
-            spreadsheetId: "18ligZCrsZHJtECMhWadUYbIjnRKMA_MMarqWy8_5sN0",
-            range: "Class Data!A2:B"
-          })
-          .then(res => console.log(res));
+      this.$getGapiClient().then(gapi => {
+        console.log("gapi", gapi);
       });
     }
   },
