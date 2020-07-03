@@ -12,16 +12,25 @@ export default {
   data: () => ({
     list: []
   }),
-  async mounted() {
-    const { data } = await axios.get(
-      "https://api.openweathermap.org/data/2.5/forecast?lat=55.75399400&lon=37.62209300&units=metric&lang=ru&appid=5cd2f8841c52e2013633cf31b2782cc8"
-    );
-    this.list = data.list.splice(0, 3).map(({ weather, main }) => ({
-      icon: weather[0].icon,
-      temp: `${
-        main.temp.toFixed().slice(0, 1) !== "-" ? "+ " : ""
-      }${main.temp.toFixed()}`
-    }));
+  methods: {
+    async fetchWeather() {
+      const apiKey = process.env.VUE_APP_OPEN_WEATHER_API_KEY || "";
+      const { data } = await axios.get(
+        `https://api.openweathermap.org/data/2.5/forecast?lat=55.75399400&lon=37.62209300&units=metric&lang=ru&appid=${apiKey}`
+      );
+      this.list = data.list.splice(0, 3).map(({ weather, main }) => ({
+        icon: weather[0].icon,
+        temp: `${
+          main.temp.toFixed().slice(0, 1) !== "-" ? "+ " : ""
+        }${main.temp.toFixed()}`
+      }));
+    }
+  },
+  mounted() {
+    this.fetchWeather();
+    setInterval(() => {
+      this.fetchWeather();
+    }, 14400000);
   }
 };
 </script>

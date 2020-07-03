@@ -50,7 +50,7 @@ export default {
       this.$getGapiClient().then(gapi => {
         gapi.client.sheets.spreadsheets.values
           .get({
-            spreadsheetId: "1ZAXTLga6Yev6MStrPBqikh_UhgE2jisschX2mz6Gl54",
+            spreadsheetId: process.env.VUE_APP_SHEET_ID || "",
             range: "A2:B"
           })
           .then(res => {
