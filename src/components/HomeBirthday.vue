@@ -1,5 +1,5 @@
 <template lang="pug">
-  .home-birthday
+  .home-birthday(v-if="isLoaded")
     span.home-birthday__icon 🎉
     p.home-birthday__empty(v-if="list.length === 0") В ближайшее время нету дней рождения
     ul.home-birthday__list(v-else)
@@ -15,7 +15,8 @@ moment.locale("ru");
 export default {
   name: "HomeBirthday",
   data: () => ({
-    list: []
+    list: [],
+    isLoaded: false
   }),
   methods: {
     setList(list) {
@@ -52,7 +53,10 @@ export default {
             spreadsheetId: "1ZAXTLga6Yev6MStrPBqikh_UhgE2jisschX2mz6Gl54",
             range: "A2:B"
           })
-          .then(res => this.setList(res.result.values));
+          .then(res => {
+            this.isLoaded = true;
+            this.setList(res.result.values);
+          });
       });
     },
     getBirthdayDate(birthday) {
