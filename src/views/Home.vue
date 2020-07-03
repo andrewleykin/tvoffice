@@ -44,9 +44,14 @@ export default {
 .home-info
   width 100%
   max-width 30%
+  display flex
+  flex-direction column
 
 .home-info__cloak
   display flex
   justify-content center
   margin-bottom 100px
+
+.home-info__birthday
+  margin-top auto
 </style>
