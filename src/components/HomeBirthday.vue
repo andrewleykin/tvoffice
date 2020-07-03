@@ -1,5 +1,5 @@
 <template lang="pug">
-  .home-birthday birthday 3
+  .home-birthday birthday 4
 </template>
 
 <script>
@@ -14,9 +14,9 @@ export default {
         gapi.client.sheets.spreadsheets.values
           .get({
             spreadsheetId: "1ZAXTLga6Yev6MStrPBqikh_UhgE2jisschX2mz6Gl54",
-            range: "Class Data!A2:B"
+            range: "A2:B"
           })
-          .then(res => console.log("res", res));
+          .then(res => console.log("res", res.result.values));
       });
     }
   },
