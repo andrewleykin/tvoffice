@@ -1,5 +1,5 @@
 <template lang="pug">
-  .home-birthday birthday 2
+  .home-birthday birthday 3
 </template>
 
 <script>
@@ -13,7 +13,7 @@ export default {
       this.$getGapiClient().then(gapi => {
         gapi.client.sheets.spreadsheets.values
           .get({
-            spreadsheetId: "18ligZCrsZHJtECMhWadUYbIjnRKMA_MMarqWy8_5sN0",
+            spreadsheetId: "1ZAXTLga6Yev6MStrPBqikh_UhgE2jisschX2mz6Gl54",
             range: "Class Data!A2:B"
           })
           .then(res => console.log("res", res));
