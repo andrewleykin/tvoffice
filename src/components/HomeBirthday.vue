@@ -52,7 +52,7 @@ export default {
             spreadsheetId: "1ZAXTLga6Yev6MStrPBqikh_UhgE2jisschX2mz6Gl54",
             range: "A2:B"
           })
-          .then(res => (this.list = res.result.values));
+          .then(res => this.setList(res.result.values));
       });
     },
     getBirthdayDate(birthday) {
