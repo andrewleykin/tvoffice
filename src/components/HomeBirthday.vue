@@ -19,32 +19,34 @@ export default {
     isLoaded: false
   }),
   methods: {
-    setList(list) {
-      this.list = list.reduce((result, [name, birthdayItem]) => {
-        const today = moment();
-        const birthday = moment(birthdayItem, "DD MMMM");
-        const isBeforeDay = birthday.isBefore(today, "day");
-        birthday.year(isBeforeDay ? moment().year() + 1 : moment().year());
+    setList(serverList) {
+      this.list = serverList
+        .reduce((result, [name, birthdayItem]) => {
+          const today = moment("2020-01-01");
+          const birthday = moment(birthdayItem, "DD MMMM");
+          const isBeforeDay = birthday.isBefore(today, "day");
+          birthday.year(isBeforeDay ? moment().year() + 1 : moment().year());
 
-        const isBetween = birthday.isBetween(
-          today,
-          moment(today)
-            .add(1, "months")
-            .endOf("months"),
-          undefined,
-          "[]"
-        );
+          const isBetween = birthday.isBetween(
+            today,
+            moment(today)
+              .add(1, "months")
+              .endOf("months"),
+            undefined,
+            "[]"
+          );
 
-        if (isBetween) {
-          result.push({
-            name,
-            birthday,
-            isToday: today.isSame(birthday)
-          });
-        }
+          if (isBetween) {
+            result.push({
+              name,
+              birthday,
+              isToday: today.isSame(birthday)
+            });
+          }
 
-        return result;
-      }, []);
+          return result;
+        }, [])
+        .sort((a, b) => (a.birthday.isBefore(b.birthday) ? -1 : 1));
     },
     getList() {
       this.$getGapiClient().then(gapi => {
